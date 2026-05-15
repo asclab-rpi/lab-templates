@@ -1,3 +1,9 @@
+# Welcome to the ASCLab
+
+For your onboarding, the following is suggested: 
+1. Join the lab Discord server: https://discord.gg/ZbUrbz569
+2. Connect with Prof. Singh and other lab members on LinkedIn and ResearchGate. 
+
 # ASCLab Lab Templates
 
 All graduate and undergraduate students preparing slides for talks, seminars or technical reports covering research performed at the
