@@ -1,0 +1,280 @@
+%% =============================================================
+%%  ASCLab @ RPI — Technical / Research Report Template
+%%  Advanced Space Concepts Laboratory
+%%  Rensselaer Polytechnic Institute
+%%
+
+
+\documentclass[11pt, letterpaper]{article}
+
+%% ---- PACKAGES -----------------------------------------------
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}           % professional tables
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{natbib}             % AAS/AIAA-style references; use \citep, \citet
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{lastpage}           % for "Page X of Y"
+
+%% ---- COLORS (RPI brand) ------------------------------------
+\definecolor{RPIred}{HTML}{D6001C}
+\definecolor{RPIdark}{HTML}{222222}
+\definecolor{ASCblue}{HTML}{1B3A6B}   % ASCLab accent navy
+
+%% ---- HYPERLINK STYLE ----------------------------------------
+\hypersetup{
+    colorlinks = true,
+    linkcolor  = ASCblue,
+    citecolor  = ASCblue,
+    urlcolor   = RPIred,
+}
+
+%% ---- SECTION FORMATTING -------------------------------------
+\titleformat{\section}
+    {\color{ASCblue}\large\bfseries}{\thesection.}{0.6em}{}[\color{ASCblue}\titlerule]
+\titleformat{\subsection}
+    {\color{RPIdark}\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}
+    {\color{RPIdark}\normalsize\itshape}{\thesubsubsection.}{0.5em}{}
+
+%% ---- THEOREM ENVIRONMENTS -----------------------------------
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+
+%% ============================================================
+%%  DOCUMENT METADATA — FILL IN BELOW
+%% ============================================================
+\newcommand{\ReportTitle}{Title of Technical Report}
+\newcommand{\ReportSubtitle}{Subtitle or Project Name}        % leave blank if none: {}
+\newcommand{\ReportNumber}{ASCLab-TR-2026-XX}                 % internal report number
+\newcommand{\AuthorList}{Author One, Author Two, Author Three}
+\newcommand{\AffiliationText}{%
+    Advanced Space Concepts Laboratory (ASCLab)\\
+    Department of Mechanical, Aerospace, and Nuclear Engineering\\
+    Rensselaer Polytechnic Institute, Troy, NY 12180
+}
+\newcommand{\CorrespondingEmail}{placeholder@rpi.edu}
+\newcommand{\ReportDate}{\today}
+\newcommand{\Keywords}{cislunar SDA; trajectory optimization; space domain awareness; CR3BP}
+\newcommand{\SponsorText}{%
+    This work was supported in part by the xxxx.                % update or remove as appropriate
+}
+%% ============================================================
+
+%% ---- HEADER / FOOTER ----------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{ASCblue}{\textbf{ASCLab} @ RPI}}
+\fancyhead[R]{\small\textcolor{RPIdark}{\ReportNumber}}
+\fancyfoot[C]{\small\textcolor{RPIdark}{Page \thepage\ of \pageref{LastPage}}}
+\fancyfoot[R]{\small\textcolor{RPIdark}{\ReportDate}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{RPIred}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0.2pt}
+
+%% =============================================================
+\begin{document}
+\onehalfspacing
+
+%% ---- COVER PAGE ---------------------------------------------
+\begin{titlepage}
+\newgeometry{top=0.75in, bottom=0.75in, left=1in, right=1in}
+\vspace{0.3cm}
+{\color{RPIred}\rule{\linewidth}{2pt}}
+\vspace{0.5cm}
+
+% -- Report number
+\begin{center}
+{\large\color{RPIdark}\texttt{\ReportNumber}}\\[0.5cm]
+
+% -- Title
+{\Huge\bfseries\color{ASCblue}\ReportTitle}\\[0.4cm]
+\ifx\ReportSubtitle\empty\else
+    {\Large\color{RPIdark}\ReportSubtitle}\\
+\fi
+\vspace{1.2cm}
+
+% -- Authors
+{\large \AuthorList}\\[0.4cm]
+{\normalsize\color{RPIdark} \AffiliationText}\\[0.3cm]
+{\normalsize Correspondence: \href{mailto:\CorrespondingEmail}{\CorrespondingEmail}}
+
+%\vfill
+
+% -- Top logo bar
+\begin{center}
+\includegraphics[height=8cm]{asclab-logo.png}
+\end{center}
+
+% -- Date and sponsor
+{\large \ReportDate}\\[1cm]
+\vspace{1 cm}
+
+\begin{minipage}{0.85\linewidth}
+    \centering\small\color{RPIdark}
+    \textit{\SponsorText}
+\end{minipage}
+
+\vspace{1 cm}
+
+\vspace{0.5cm}
+{\color{RPIred}\rule{\linewidth}{2pt}}
+
+\vspace{0.3cm}
+{\small\color{RPIdark}
+    \textbf{Advanced Space Concepts Laboratory (ASCLab)} $\cdot$
+    Rensselaer Polytechnic Institute $\cdot$
+    \href{https://www.asclabrpi.com}{asclabrpi.com}
+}
+\end{center}
+\restoregeometry
+\end{titlepage}
+
+%% ---- ABSTRACT & KEYWORDS ------------------------------------
+\thispagestyle{empty}
+\begin{center}
+{\large\bfseries\color{ASCblue}\ReportTitle}\\[0.3cm]
+{\normalsize \AuthorList}
+\end{center}
+
+\begin{abstract}
+\noindent
+Replace this text with your abstract (150–250 words). The abstract should concisely state
+the motivation, problem formulation, methodology, key results, and conclusion.
+Avoid using references or unexplained acronyms in the abstract.
+\end{abstract}
+
+\noindent\textbf{Keywords:} \Keywords
+
+\vspace{0.5cm}
+{\color{RPIred}\rule{\linewidth}{0.8pt}}
+
+%% ---- TABLE OF CONTENTS (optional — comment out if unneeded) -
+\tableofcontents
+\newpage
+
+%% =============================================================
+%%  BODY — edit from here
+%% =============================================================
+
+\section{Introduction}
+\label{sec:intro}
+
+Provide background, motivation, and a clear statement of the problem. Summarize the
+contributions of this report and outline the structure of the document. Cite prior
+work using \texttt{\textbackslash citep\{key\}} or \texttt{\textbackslash citet\{key\}}.
+
+Example citation: The CR3BP is a canonical model for cislunar trajectory design
+\citep{szebehely1967theory}.
+
+\section{Theoretical Background}
+\label{sec:background}
+
+\subsection{Equations of Motion}
+\label{sec:eom}
+
+The non-dimensional equations of motion in the CR3BP are
+\begin{equation}
+    \ddot{x} - 2\dot{y} = \frac{\partial \Omega^*}{\partial x}, \quad
+    \ddot{y} + 2\dot{x} = \frac{\partial \Omega^*}{\partial y}, \quad
+    \ddot{z}             = \frac{\partial \Omega^*}{\partial z},
+    \label{eq:cr3bp}
+\end{equation}
+where $\Omega^* = \tfrac{1}{2}(x^2+y^2) + \tfrac{1-\mu}{r_1} + \tfrac{\mu}{r_2}$
+is the pseudo-potential and $\mu = m_2/(m_1+m_2)$ is the mass ratio.
+
+\subsection{Another Subsection}
+
+Additional theory here.
+
+\section{Methodology}
+\label{sec:method}
+
+Describe your algorithms, estimation framework, sensor models, or optimization approach.
+Use theorem environments where appropriate.
+
+\begin{theorem}[Jacobi Integral]
+\label{thm:jacobi}
+The quantity $C = 2\Omega^* - (\dot{x}^2 + \dot{y}^2 + \dot{z}^2)$ is constant along
+any solution of \eqref{eq:cr3bp}.
+\end{theorem}
+
+\begin{proof}
+Take the dot product of the velocity vector with the equations of motion \ldots
+\end{proof}
+
+\section{Results and Discussion}
+\label{sec:results}
+
+\subsection{Simulation Setup}
+
+Describe your test environment, initial conditions, and parameters.
+
+\subsection{Key Results}
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.75\linewidth]{figures/your_figure.pdf}
+    \caption{Replace with your figure. Use PDF or EPS for vector graphics.}
+    \label{fig:result1}
+\end{figure}
+
+Results can be tabulated as follows.
+
+\begin{table}[H]
+    \centering
+    \caption{Summary of simulation parameters.}
+    \label{tab:params}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Parameter} & \textbf{Symbol} & \textbf{Value} \\
+        \midrule
+        Mass ratio         & $\mu$           & 0.01215 \\
+        Initial epoch      & $t_0$           & J2000.0 \\
+        Integration tol.   & ---             & $10^{-12}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Summarize the main findings and their significance. State limitations and suggest
+directions for future work.
+
+%% ---- ACKNOWLEDGMENTS ----------------------------------------
+\section*{Acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+The authors thank \ldots\ for helpful discussions. \SponsorText
+
+%% ---- REFERENCES ---------------------------------------------
+\bibliographystyle{plainnat}    % or aiaa, apalike, etc.
+\bibliography{references}       % <-- your .bib file name (without extension)
+
+%% Example manual reference (remove once you have a .bib file):
+\begin{thebibliography}{9}
+\bibitem{szebehely1967theory}
+V.~Szebehely,
+\textit{Theory of Orbits: The Restricted Problem of Three Bodies}.
+Academic Press, New York, 1967.
+\end{thebibliography}
+
+\end{document}
